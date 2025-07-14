@@ -75,7 +75,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    if: github.event_name == 'pull_request'
+    if: false # Disabled until Vercel secrets are configured
     
     steps:
     - name: Checkout code
@@ -110,7 +110,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    if: github.ref == 'refs/heads/main'
+    if: false # Disabled until Vercel secrets are configured
     
     steps:
     - name: Checkout code
