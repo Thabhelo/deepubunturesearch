@@ -9,6 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     
     strategy:
       matrix:
@@ -26,26 +27,39 @@ jobs:
         
     - name: Install dependencies
       run: npm ci --legacy-peer-deps
+      timeout-minutes: 10
       
     - name: Run linter
       run: npm run lint
+      timeout-minutes: 5
       
     - name: Run type check
       run: npm run type-check
+      timeout-minutes: 5
       
     - name: Run unit tests
       run: npm run test
+      timeout-minutes: 5
+      env:
+        NODE_OPTIONS: '--max_old_space_size=4096'
       
     - name: Build application
       run: npm run build
-      
+      timeout-minutes: 10
+      env:
+        NODE_OPTIONS: '--max_old_space_size=4096'
+        CI: true
+        
     - name: Install Playwright browsers
       run: npx playwright install --with-deps chromium
+      timeout-minutes: 10
       
     - name: Run E2E tests
       run: npm run test:e2e
+      timeout-minutes: 10
       env:
         CI: true
+        NODE_OPTIONS: '--max_old_space_size=4096'
         
     - name: Upload Playwright report
       uses: actions/upload-artifact@v4
@@ -58,6 +72,7 @@ jobs:
   deploy-preview:
     needs: test
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     if: github.event_name == 'pull_request'
     
     steps:
@@ -72,9 +87,14 @@ jobs:
         
     - name: Install dependencies
       run: npm ci --legacy-peer-deps
+      timeout-minutes: 10
       
     - name: Build application
       run: npm run build
+      timeout-minutes: 10
+      env:
+        NODE_OPTIONS: '--max_old_space_size=4096'
+        CI: true
       
     - name: Deploy to Vercel Preview
       uses: amondnet/vercel-action@v25
@@ -86,6 +106,7 @@ jobs:
   deploy-production:
     needs: test
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     if: github.ref == 'refs/heads/main'
     
     steps:
@@ -100,9 +121,14 @@ jobs:
         
     - name: Install dependencies
       run: npm ci --legacy-peer-deps
+      timeout-minutes: 10
       
     - name: Build application
       run: npm run build
+      timeout-minutes: 10
+      env:
+        NODE_OPTIONS: '--max_old_space_size=4096'
+        CI: true
       
     - name: Deploy to Vercel Production
       uses: amondnet/vercel-action@v25
