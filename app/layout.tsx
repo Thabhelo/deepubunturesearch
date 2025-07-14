@@ -4,6 +4,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/providers/theme-provider'
 import { HotkeyProvider } from '@/components/providers/hotkey-provider'
 import { ToastProvider } from '@/components/providers/toast-provider'
+import { Navigation } from '@/components/ui/navigation'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -80,7 +81,10 @@ export default function RootLayout({
         >
           <HotkeyProvider>
             <ToastProvider>
-              {children}
+              <Navigation />
+              <div className="pt-16">
+                {children}
+              </div>
             </ToastProvider>
           </HotkeyProvider>
         </ThemeProvider>
