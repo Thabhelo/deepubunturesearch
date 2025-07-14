@@ -4,7 +4,7 @@ const nextConfig = {
     domains: ['localhost'],
   },
   webpack: (config, { isServer }) => {
-    // Handle GSAP
+    // Handle GSAP and browser-only packages
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
@@ -13,6 +13,7 @@ const nextConfig = {
         tls: false,
       }
     }
+
     return config
   },
 }
