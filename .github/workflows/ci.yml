@@ -75,7 +75,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    if: false # Disabled until Vercel secrets are configured
+    if: github.event_name == 'pull_request'
     
     steps:
     - name: Checkout code
@@ -101,16 +101,19 @@ jobs:
       
     - name: Deploy to Vercel Preview
       uses: amondnet/vercel-action@v25
+      id: vercel-preview
       with:
         vercel-token: ${{ secrets.VERCEL_TOKEN }}
         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        github-comment: true
+        working-directory: ./
 
   deploy-production:
     needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    if: false # Disabled until Vercel secrets are configured
+    if: github.ref == 'refs/heads/main'
     
     steps:
     - name: Checkout code
@@ -136,8 +139,11 @@ jobs:
       
     - name: Deploy to Vercel Production
       uses: amondnet/vercel-action@v25
+      id: vercel-production
       with:
         vercel-token: ${{ secrets.VERCEL_TOKEN }}
         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-        vercel-args: '--prod' 
+        vercel-args: '--prod'
+        github-comment: true
+        working-directory: ./ 
