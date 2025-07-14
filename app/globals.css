@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
+/* KaTeX styles */
+@import 'katex/dist/katex.min.css';
+
+@layer base {
+  :root {
+    --background: 273 100% 6%;
+    --foreground: 273 10% 95%;
+    --card: 273 100% 8%;
+    --card-foreground: 273 10% 95%;
+    --popover: 273 100% 8%;
+    --popover-foreground: 273 10% 95%;
+    --primary: 273 100% 50%;
+    --primary-foreground: 273 10% 95%;
+    --secondary: 273 20% 15%;
+    --secondary-foreground: 273 10% 95%;
+    --muted: 273 20% 15%;
+    --muted-foreground: 273 10% 65%;
+    --accent: 273 20% 15%;
+    --accent-foreground: 273 10% 95%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 273 20% 20%;
+    --input: 273 20% 20%;
+    --ring: 273 100% 50%;
+    --radius: 0.5rem;
+
+    /* Custom Deep Ubuntu tokens */
+    --dbu-bg-primary: #11001F;
+    --dbu-bg-elevated: #18002D;
+    --dbu-fg-primary: #FFFFFF;
+    --dbu-fg-secondary: #D6D3E0;
+    --dbu-gradient: linear-gradient(90deg, #AA00FF 0%, #6E00FF 100%);
+    --dbu-shadow-card: 0 6px 24px rgba(110, 0, 255, 0.25);
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 273 100% 6%;
+    --card: 0 0% 100%;
+    --card-foreground: 273 100% 6%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 273 100% 6%;
+    --primary: 273 100% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 273 10% 95%;
+    --secondary-foreground: 273 100% 6%;
+    --muted: 273 10% 95%;
+    --muted-foreground: 273 10% 45%;
+    --accent: 273 10% 95%;
+    --accent-foreground: 273 100% 6%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 273 10% 90%;
+    --input: 273 10% 90%;
+    --ring: 273 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-dbu-bg text-dbu-fg font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--dbu-gradient);
+  }
+  
+  .border-gradient {
+    background: var(--dbu-gradient);
+    padding: 1px;
+  }
+  
+  .border-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: var(--dbu-bg-primary);
+    border-radius: inherit;
+  }
+  
+  .glow {
+    box-shadow: 0 0 20px rgba(170, 0, 255, 0.5);
+  }
+  
+  .card-glow {
+    box-shadow: var(--dbu-shadow-card);
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dbu-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dbu-gradient);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #BB11FF 0%, #7F11FF 100%);
+}
+
+/* Toast animations */
+@keyframes toast-hide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes toast-slide-in-right {
+  from {
+    transform: translateX(calc(100% + 1rem));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes toast-slide-in-bottom {
+  from {
+    transform: translateY(calc(100% + 1rem));
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes toast-swipe-out-x {
+  from {
+    transform: translateX(var(--radix-toast-swipe-end-x));
+  }
+  to {
+    transform: translateX(calc(100% + 1rem));
+  }
+}
+
+@keyframes toast-swipe-out-y {
+  from {
+    transform: translateY(var(--radix-toast-swipe-end-y));
+  }
+  to {
+    transform: translateY(calc(100% + 1rem));
+  }
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(170, 0, 255, 0.3);
+  color: var(--dbu-fg-primary);
+} 

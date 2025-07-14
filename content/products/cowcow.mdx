@@ -1,0 +1,192 @@
+---
+title: "cowcow CLI"
+slug: "cowcow"
+tagline: "Offline-first data capture and processing"
+status: "stable"
+stack: ["Rust", "SQLite", "WebAssembly", "CLI"]
+order: 2
+modelScene: true
+---
+
+# cowcow CLI
+
+## Overview
+
+cowcow is a powerful command-line interface designed for offline-first data capture and processing. Built with Rust for maximum performance and reliability, cowcow enables researchers, developers, and data scientists to collect, process, and synchronize data even in environments with limited or no internet connectivity.
+
+## Key Features
+
+### Offline-First Architecture
+- **Local Storage**: SQLite database for reliable local data storage
+- **Sync Capabilities**: Intelligent synchronization when connectivity is available
+- **Conflict Resolution**: Automated conflict resolution for concurrent edits
+- **Data Integrity**: Built-in validation and error recovery
+
+### High Performance
+- **Rust-Powered**: Lightning-fast processing with memory safety
+- **Concurrent Processing**: Multi-threaded data processing
+- **Minimal Dependencies**: Lightweight binary with no external dependencies
+- **Cross-Platform**: Works on Linux, macOS, and Windows
+
+### Developer-Friendly
+- **Simple API**: Intuitive command-line interface
+- **Extensible**: Plugin architecture for custom processors
+- **Scriptable**: Easy integration with existing workflows
+- **Rich Documentation**: Comprehensive guides and examples
+
+## Architecture
+
+cowcow is built on a modular architecture:
+
+```
+┌─────────────────┐
+│   CLI Interface │
+├─────────────────┤
+│   Data Processor│
+├─────────────────┤
+│   Storage Layer │
+├─────────────────┤
+│   Sync Engine   │
+└─────────────────┘
+```
+
+### Core Components
+
+1. **Data Ingestion**: Flexible input formats (JSON, CSV, XML, Binary)
+2. **Processing Pipeline**: Configurable data transformation chains
+3. **Storage Engine**: Optimized SQLite with custom extensions
+4. **Sync Protocol**: Efficient delta synchronization
+
+## Installation
+
+### Quick Install
+```bash
+# Using cargo
+cargo install cowcow
+
+# Using homebrew (macOS)
+brew install cowcow
+
+# Using curl
+curl -sSf https://get.cowcow.dev | sh
+```
+
+### From Source
+```bash
+git clone https://github.com/deep-ubuntu/cowcow
+cd cowcow
+cargo build --release
+```
+
+## Usage Examples
+
+### Basic Data Capture
+```bash
+# Initialize a new project
+cowcow init my-project
+
+# Capture data from stdin
+echo '{"name": "John", "age": 30}' | cowcow capture --format json
+
+# Process a CSV file
+cowcow process data.csv --transform normalize --output processed.json
+
+# Sync with remote endpoint
+cowcow sync --endpoint https://api.example.com/data
+```
+
+### Advanced Processing
+```bash
+# Chain multiple processors
+cowcow process data.csv \
+  --transform "filter:age>18" \
+  --transform "group:by=country" \
+  --transform "aggregate:sum=population" \
+  --output results.json
+
+# Real-time processing
+cowcow watch /data/input \
+  --on-change "process --transform normalize" \
+  --sync-interval 5m
+```
+
+## Configuration
+
+Create a `cowcow.toml` configuration file:
+
+```toml
+[project]
+name = "research-data"
+version = "1.0.0"
+
+[storage]
+database = "data.db"
+backup_interval = "1h"
+
+[sync]
+endpoint = "https://api.research.org/sync"
+auth_token = "${COWCOW_AUTH_TOKEN}"
+batch_size = 1000
+
+[processing]
+workers = 4
+memory_limit = "1GB"
+
+[[processors]]
+name = "normalize"
+config = { remove_nulls = true, lowercase_keys = true }
+
+[[processors]]
+name = "validate"
+config = { schema = "schema.json" }
+```
+
+## Pricing
+
+### Open Source
+- **Free** forever
+- Full source code access
+- Community support
+- MIT license
+
+### Commercial Support
+- **$99/month** per developer
+- Priority support
+- Custom features
+- Training and consulting
+
+### Enterprise
+- **Custom pricing**
+- On-premise deployment
+- Dedicated support team
+- Custom integrations
+
+## Use Cases
+
+### Research Data Collection
+- **Field Studies**: Collect data in remote locations
+- **Surveys**: Offline survey collection and processing
+- **Experiments**: Real-time data capture and analysis
+- **IoT Data**: Edge computing and sensor data processing
+
+### Business Applications
+- **Point of Sale**: Offline transaction processing
+- **Inventory Management**: Real-time stock tracking
+- **Field Services**: Mobile workforce data collection
+- **Analytics**: Local data processing and reporting
+
+## Getting Started
+
+1. **Install cowcow**: Choose your preferred installation method
+2. **Initialize a project**: `cowcow init my-project`
+3. **Configure settings**: Edit `cowcow.toml` for your needs
+4. **Start capturing**: Use `cowcow capture` to begin data collection
+5. **Process data**: Transform and analyze with built-in processors
+6. **Sync**: Push data to remote endpoints when connected
+
+## Community
+
+- **GitHub**: [github.com/deep-ubuntu/cowcow](https://github.com/deep-ubuntu/cowcow)
+- **Discord**: Join our community server
+- **Documentation**: [docs.cowcow.dev](https://docs.cowcow.dev)
+- **Examples**: [github.com/deep-ubuntu/cowcow-examples](https://github.com/deep-ubuntu/cowcow-examples) 
