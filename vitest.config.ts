@@ -1,7 +1,7 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
-import { resolve } from 'path'
+import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
@@ -9,20 +9,17 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./tests/setup.ts'],
     globals: true,
-    include: ['tests/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    include: ['tests/**/*.test.{ts,tsx}'],
     exclude: [
       'node_modules', 
       'dist', 
-      '.idea', 
-      '.git', 
-      '.cache',
+      '.next',
       'tests/**/*.spec.ts', // Exclude Playwright E2E tests
-      'playwright.config.ts'
     ],
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, './'),
+      '@': path.resolve(process.cwd()),
     },
   },
 }) 

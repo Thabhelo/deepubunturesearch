@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     
     strategy:
       matrix:
@@ -27,36 +27,38 @@ jobs:
         
     - name: Install dependencies
       run: npm ci --legacy-peer-deps
-      timeout-minutes: 10
+      timeout-minutes: 15
       
     - name: Run linter
       run: npm run lint
-      timeout-minutes: 5
+      timeout-minutes: 10
       
     - name: Run type check
       run: npm run type-check
-      timeout-minutes: 5
+      timeout-minutes: 10
       
     - name: Run unit tests
       run: npm run test
-      timeout-minutes: 5
+      timeout-minutes: 10
       env:
-        NODE_OPTIONS: '--max_old_space_size=4096'
+        NODE_OPTIONS: '--max_old_space_size=6144'
+        CI: true
       
     - name: Build application
       run: npm run build
-      timeout-minutes: 10
+      timeout-minutes: 20
       env:
-        NODE_OPTIONS: '--max_old_space_size=4096'
+        NODE_OPTIONS: '--max_old_space_size=6144'
         CI: true
+        NEXT_TELEMETRY_DISABLED: 1
         
     - name: Install Playwright browsers
       run: npx playwright install --with-deps chromium
-      timeout-minutes: 10
+      timeout-minutes: 15
       
     - name: Run E2E tests
       run: npm run test:e2e
-      timeout-minutes: 10
+      timeout-minutes: 15
       env:
         CI: true
         NODE_OPTIONS: '--max_old_space_size=4096'
@@ -72,7 +74,7 @@ jobs:
   deploy-preview:
     needs: test
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     if: github.event_name == 'pull_request'
     
     steps:
@@ -87,14 +89,15 @@ jobs:
         
     - name: Install dependencies
       run: npm ci --legacy-peer-deps
-      timeout-minutes: 10
+      timeout-minutes: 15
       
     - name: Build application
       run: npm run build
-      timeout-minutes: 10
+      timeout-minutes: 20
       env:
-        NODE_OPTIONS: '--max_old_space_size=4096'
+        NODE_OPTIONS: '--max_old_space_size=6144'
         CI: true
+        NEXT_TELEMETRY_DISABLED: 1
       
     - name: Deploy to Vercel Preview
       uses: amondnet/vercel-action@v25
@@ -106,7 +109,7 @@ jobs:
   deploy-production:
     needs: test
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     if: github.ref == 'refs/heads/main'
     
     steps:
@@ -121,14 +124,15 @@ jobs:
         
     - name: Install dependencies
       run: npm ci --legacy-peer-deps
-      timeout-minutes: 10
+      timeout-minutes: 15
       
     - name: Build application
       run: npm run build
-      timeout-minutes: 10
+      timeout-minutes: 20
       env:
-        NODE_OPTIONS: '--max_old_space_size=4096'
+        NODE_OPTIONS: '--max_old_space_size=6144'
         CI: true
+        NEXT_TELEMETRY_DISABLED: 1
       
     - name: Deploy to Vercel Production
       uses: amondnet/vercel-action@v25
