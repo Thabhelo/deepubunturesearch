@@ -229,7 +229,7 @@ export default function OpenSourcePage() {
               Our <span className="text-gradient">Philosophy</span>
             </h2>
             <p className="text-xl text-dbu-fg-2 max-w-3xl mx-auto">
-              We believe in the Ubuntu philosophy: "I am because we are." 
+              We believe in the Ubuntu philosophy: &ldquo;I am because we are.&rdquo; 
               Open source is fundamental to democratizing AI for Africa and beyond.
             </p>
           </div>

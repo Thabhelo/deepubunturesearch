@@ -116,7 +116,7 @@ export default function ContactPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {contactMethods.map((method, index) => (
+            {contactMethods.map((method, _) => (
               <div
                 key={method.title}
                 className="bg-dbu-bg-2/50 rounded-2xl p-6 border border-dbu-grad-from/20 hover:border-dbu-grad-from/40 transition-all duration-300"
@@ -283,7 +283,7 @@ export default function ContactPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {offices.map((office, index) => (
+            {offices.map((office, _) => (
               <div
                 key={office.city}
                 className="bg-dbu-bg-2/50 rounded-2xl p-6 border border-dbu-grad-from/20 hover:border-dbu-grad-from/40 transition-all duration-300"
@@ -350,9 +350,9 @@ export default function ContactPage() {
                 question: "What's your approach to data privacy and security?",
                 answer: "We prioritize data privacy and security with encryption, minimal data collection, and compliance with international standards. Read our privacy policy for full details."
               }
-            ].map((faq, index) => (
+            ].map((faq, _) => (
               <div
-                key={index}
+                key={faq.question}
                 className="bg-dbu-bg-2/50 rounded-2xl p-6 border border-dbu-grad-from/20"
               >
                 <h3 className="text-lg font-display font-semibold text-dbu-fg mb-3">

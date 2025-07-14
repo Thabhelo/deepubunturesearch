@@ -1,10 +1,18 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { AnimatedSection, AnimatedCard } from '@/components/ui/animated-section'
 
-// Server-safe motion component replacement
+// Server-safe motion replacement
 const motion = {
-  div: ({ children, className, ...props }: any) => <div className={className}>{children}</div>
+  div: ({ children, className, initial, animate, transition, ...props }: { 
+    children: React.ReactNode; 
+    className?: string;
+    initial?: any;
+    animate?: any;
+    transition?: any;
+    [key: string]: any;
+  }) => (
+    <div className={className}>{children}</div>
+  )
 }
 
 export const metadata: Metadata = {
@@ -232,7 +240,7 @@ export default function SupportPage() {
               Get <span className="text-gradient">Support</span>
             </h1>
             <p className="text-xl text-dbu-fg-2 max-w-3xl mx-auto leading-relaxed">
-              We're here to help you succeed with Deep Ubuntu Research. 
+              We&apos;re here to help you succeed with Deep Ubuntu Research. 
               Find answers, get assistance, and connect with our community.
             </p>
           </motion.div>
@@ -447,7 +455,7 @@ export default function SupportPage() {
               Still Need <span className="text-gradient">Help?</span>
             </h2>
             <p className="text-xl text-dbu-fg-2 mb-8 max-w-2xl mx-auto">
-              Can't find what you're looking for? Our support team is ready to help.
+              Can&apos;t find what you&apos;re looking for? Our support team is ready to help.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 

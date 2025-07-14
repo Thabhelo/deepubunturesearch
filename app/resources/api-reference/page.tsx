@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { AnimatedSection, AnimatedCard } from '@/components/ui/animated-section'
 
-// Server-safe motion component replacement
+// Server-safe motion replacement
 const motion = {
-  div: ({ children, className, ...props }: any) => <div className={className}>{children}</div>
+  div: ({ children, className }: { children: React.ReactNode; className?: string }) => (
+    <div className={className}>{children}</div>
+  )
 }
 
 export const metadata: Metadata = {
@@ -23,7 +25,7 @@ export default function APIReferencePage() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <AnimatedSection>
+          <div className="max-w-7xl mx-auto text-center">
             <h1 className="text-5xl md:text-7xl font-bold text-dbu-fg mb-6">
               API <span className="text-gradient">Reference</span>
             </h1>
@@ -45,14 +47,14 @@ export default function APIReferencePage() {
                 View Examples
               </Link>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* Getting Started */}
       <section id="getting-started" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <AnimatedSection>
+          <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-center text-dbu-fg mb-4">
               Getting Started
             </h2>
@@ -60,10 +62,10 @@ export default function APIReferencePage() {
               Quick setup guide to start using our APIs in minutes.
               All you need is an API key and your favorite programming language.
             </p>
-          </AnimatedSection>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <AnimatedCard delay={0.1} className="bg-dbu-bg-2/50 rounded-xl p-6 border border-dbu-grad-from/20">
+            <div className="bg-dbu-bg-2/50 rounded-xl p-6 border border-dbu-grad-from/20">
               <div className="w-12 h-12 bg-dbu-gradient text-white rounded-lg flex items-center justify-center mb-4 font-bold text-xl">
                 1
               </div>
@@ -74,9 +76,9 @@ export default function APIReferencePage() {
               <Link href="/contact" className="text-dbu-grad-from hover:text-dbu-grad-to transition-colors">
                 Get Your Key →
               </Link>
-            </AnimatedCard>
+            </div>
 
-            <AnimatedCard delay={0.2} className="bg-dbu-bg-2/50 rounded-xl p-6 border border-dbu-grad-from/20">
+            <div className="bg-dbu-bg-2/50 rounded-xl p-6 border border-dbu-grad-from/20">
               <div className="w-12 h-12 bg-dbu-gradient text-white rounded-lg flex items-center justify-center mb-4 font-bold text-xl">
                 2
               </div>
@@ -87,9 +89,9 @@ export default function APIReferencePage() {
               <Link href="#authentication" className="text-dbu-grad-from hover:text-dbu-grad-to transition-colors">
                 View Auth Docs →
               </Link>
-            </AnimatedCard>
+            </div>
 
-            <AnimatedCard delay={0.3} className="bg-dbu-bg-2/50 rounded-xl p-6 border border-dbu-grad-from/20">
+            <div className="bg-dbu-bg-2/50 rounded-xl p-6 border border-dbu-grad-from/20">
               <div className="w-12 h-12 bg-dbu-gradient text-white rounded-lg flex items-center justify-center mb-4 font-bold text-xl">
                 3
               </div>
@@ -100,7 +102,7 @@ export default function APIReferencePage() {
               <Link href="#sdks" className="text-dbu-grad-from hover:text-dbu-grad-to transition-colors">
                 Download SDKs →
               </Link>
-            </AnimatedCard>
+            </div>
           </div>
         </div>
       </section>
@@ -108,7 +110,7 @@ export default function APIReferencePage() {
       {/* API Endpoints */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-dbu-bg-2/30">
         <div className="max-w-7xl mx-auto">
-          <AnimatedSection>
+          <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-center text-dbu-fg mb-4">
               API Endpoints
             </h2>
@@ -116,10 +118,10 @@ export default function APIReferencePage() {
               Comprehensive API endpoints organized by functionality.
               Each endpoint includes detailed documentation and code examples.
             </p>
-          </AnimatedSection>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <AnimatedCard delay={0.1} className="bg-dbu-bg rounded-xl p-8 shadow-lg border border-dbu-grad-from/20">
+            <div className="bg-dbu-bg rounded-xl p-8 shadow-lg border border-dbu-grad-from/20">
               <h3 className="text-2xl font-semibold text-dbu-fg mb-4">Authentication</h3>
               <p className="text-dbu-fg-2 mb-6">
                 Secure authentication and authorization endpoints for API access management.
@@ -138,9 +140,9 @@ export default function APIReferencePage() {
                   <span className="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded text-xs">Auth</span>
                 </div>
               </div>
-            </AnimatedCard>
+            </div>
 
-            <AnimatedCard delay={0.2} className="bg-dbu-bg rounded-xl p-8 shadow-lg border border-dbu-grad-from/20">
+            <div className="bg-dbu-bg rounded-xl p-8 shadow-lg border border-dbu-grad-from/20">
               <h3 className="text-2xl font-semibold text-dbu-fg mb-4">Deep Ubuntu AI</h3>
               <p className="text-dbu-fg-2 mb-6">
                 Core AI processing endpoints for text analysis, generation, and understanding.
@@ -159,9 +161,9 @@ export default function APIReferencePage() {
                   <span className="bg-green-500/20 text-green-400 px-2 py-1 rounded text-xs">Public</span>
                 </div>
               </div>
-            </AnimatedCard>
+            </div>
 
-            <AnimatedCard delay={0.3} className="bg-dbu-bg rounded-xl p-8 shadow-lg border border-dbu-grad-from/20">
+            <div className="bg-dbu-bg rounded-xl p-8 shadow-lg border border-dbu-grad-from/20">
               <h3 className="text-2xl font-semibold text-dbu-fg mb-4">Data Management</h3>
               <p className="text-dbu-fg-2 mb-6">
                 Endpoints for managing datasets, training data, and custom model configurations.
@@ -180,9 +182,9 @@ export default function APIReferencePage() {
                   <span className="bg-red-500/20 text-red-400 px-2 py-1 rounded text-xs">Owner</span>
                 </div>
               </div>
-            </AnimatedCard>
+            </div>
 
-            <AnimatedCard delay={0.4} className="bg-dbu-bg rounded-xl p-8 shadow-lg border border-dbu-grad-from/20">
+            <div className="bg-dbu-bg rounded-xl p-8 shadow-lg border border-dbu-grad-from/20">
               <h3 className="text-2xl font-semibold text-dbu-fg mb-4">Analytics</h3>
               <p className="text-dbu-fg-2 mb-6">
                 Usage analytics, performance metrics, and reporting endpoints.
@@ -201,7 +203,7 @@ export default function APIReferencePage() {
                   <span className="bg-blue-500/20 text-blue-400 px-2 py-1 rounded text-xs">Premium</span>
                 </div>
               </div>
-            </AnimatedCard>
+            </div>
           </div>
         </div>
       </section>
@@ -209,7 +211,7 @@ export default function APIReferencePage() {
       {/* Code Examples */}
       <section id="examples" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <AnimatedSection>
+          <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-center text-dbu-fg mb-4">
               Code Examples
             </h2>
@@ -217,10 +219,10 @@ export default function APIReferencePage() {
               Ready-to-use code examples in popular programming languages.
               Copy, paste, and start building immediately.
             </p>
-          </AnimatedSection>
+          </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            <AnimatedCard delay={0.1} className="bg-dbu-bg rounded-xl p-6 shadow-lg border border-dbu-grad-from/20">
+            <div className="bg-dbu-bg rounded-xl p-6 shadow-lg border border-dbu-grad-from/20">
               <h3 className="text-lg font-semibold text-dbu-fg mb-4">Python</h3>
               <div className="bg-gray-900 rounded-lg p-4 text-sm">
                 <pre className="text-green-400">
@@ -240,9 +242,9 @@ response = requests.post(url, json=data, headers=headers)
 print(response.json())`}
                 </pre>
               </div>
-            </AnimatedCard>
+            </div>
 
-            <AnimatedCard delay={0.2} className="bg-dbu-bg rounded-xl p-6 shadow-lg border border-dbu-grad-from/20">
+            <div className="bg-dbu-bg rounded-xl p-6 shadow-lg border border-dbu-grad-from/20">
               <h3 className="text-lg font-semibold text-dbu-fg mb-4">JavaScript</h3>
               <div className="bg-gray-900 rounded-lg p-4 text-sm">
                 <pre className="text-blue-400">
@@ -262,9 +264,9 @@ const data = await response.json();
 console.log(data);`}
                 </pre>
               </div>
-            </AnimatedCard>
+            </div>
 
-            <AnimatedCard delay={0.3} className="bg-dbu-bg rounded-xl p-6 shadow-lg border border-dbu-grad-from/20">
+            <div className="bg-dbu-bg rounded-xl p-6 shadow-lg border border-dbu-grad-from/20">
               <h3 className="text-lg font-semibold text-dbu-fg mb-4">cURL</h3>
               <div className="bg-gray-900 rounded-lg p-4 text-sm">
                 <pre className="text-yellow-400">
@@ -278,7 +280,7 @@ console.log(data);`}
   }'`}
                 </pre>
               </div>
-            </AnimatedCard>
+            </div>
           </div>
         </div>
       </section>
@@ -287,13 +289,13 @@ console.log(data);`}
       <section id="sdks" className="py-20 px-4 sm:px-6 lg:px-8 bg-dbu-bg-2/30">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
-            <AnimatedSection>
+            <div className="max-w-7xl mx-auto">
               <h2 className="text-3xl font-bold text-dbu-fg mb-6">Official SDKs</h2>
               <p className="text-dbu-fg-2 mb-8">
                 Use our official SDKs for faster integration and better developer experience.
               </p>
               <div className="space-y-4">
-                <AnimatedCard delay={0.1} className="bg-dbu-bg rounded-lg p-4 border border-dbu-grad-from/20 flex items-center justify-between">
+                <div className="bg-dbu-bg rounded-lg p-4 border border-dbu-grad-from/20 flex items-center justify-between">
                   <div>
                     <h3 className="font-semibold text-dbu-fg">Python SDK</h3>
                     <p className="text-sm text-dbu-fg-2">Full-featured Python library</p>
@@ -301,8 +303,8 @@ console.log(data);`}
                   <Link href="#" className="bg-dbu-gradient text-white px-4 py-2 rounded hover:opacity-90 transition-colors">
                     Download
                   </Link>
-                </AnimatedCard>
-                <AnimatedCard delay={0.2} className="bg-dbu-bg rounded-lg p-4 border border-dbu-grad-from/20 flex items-center justify-between">
+                </div>
+                <div className="bg-dbu-bg rounded-lg p-4 border border-dbu-grad-from/20 flex items-center justify-between">
                   <div>
                     <h3 className="font-semibold text-dbu-fg">Node.js SDK</h3>
                     <p className="text-sm text-dbu-fg-2">JavaScript/TypeScript support</p>
@@ -310,8 +312,8 @@ console.log(data);`}
                   <Link href="#" className="bg-dbu-gradient text-white px-4 py-2 rounded hover:opacity-90 transition-colors">
                     Download
                   </Link>
-                </AnimatedCard>
-                <AnimatedCard delay={0.3} className="bg-dbu-bg rounded-lg p-4 border border-dbu-grad-from/20 flex items-center justify-between">
+                </div>
+                <div className="bg-dbu-bg rounded-lg p-4 border border-dbu-grad-from/20 flex items-center justify-between">
                   <div>
                     <h3 className="font-semibold text-dbu-fg">Go SDK</h3>
                     <p className="text-sm text-dbu-fg-2">Lightweight Go implementation</p>
@@ -319,8 +321,8 @@ console.log(data);`}
                   <Link href="#" className="bg-dbu-gradient text-white px-4 py-2 rounded hover:opacity-90 transition-colors">
                     Download
                   </Link>
-                </AnimatedCard>
-                <AnimatedCard delay={0.4} className="bg-dbu-bg rounded-lg p-4 border border-dbu-grad-from/20 flex items-center justify-between">
+                </div>
+                <div className="bg-dbu-bg rounded-lg p-4 border border-dbu-grad-from/20 flex items-center justify-between">
                   <div>
                     <h3 className="font-semibold text-dbu-fg">Java SDK</h3>
                     <p className="text-sm text-dbu-fg-2">Enterprise Java integration</p>
@@ -328,11 +330,11 @@ console.log(data);`}
                   <Link href="#" className="bg-dbu-gradient text-white px-4 py-2 rounded hover:opacity-90 transition-colors">
                     Download
                   </Link>
-                </AnimatedCard>
+                </div>
               </div>
-            </AnimatedSection>
+            </div>
 
-            <AnimatedSection>
+            <div className="max-w-7xl mx-auto">
               <h2 className="text-3xl font-bold text-dbu-fg mb-6">Rate Limits</h2>
               <p className="text-dbu-fg-2 mb-8">
                 API rate limits based on your subscription plan. All limits are per API key.
@@ -370,7 +372,7 @@ console.log(data);`}
                   </tbody>
                 </table>
               </div>
-            </AnimatedSection>
+            </div>
           </div>
         </div>
       </section>
@@ -378,7 +380,7 @@ console.log(data);`}
       {/* API Status */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <AnimatedSection>
+          <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold text-dbu-fg mb-6">API Status</h2>
             <p className="text-xl text-dbu-fg-2 mb-8">
               Real-time status of our API services and infrastructure.
@@ -403,14 +405,14 @@ console.log(data);`}
                 <p className="text-xs text-dbu-fg-2 mt-2">99.98% uptime</p>
               </div>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-dbu-gradient">
         <div className="max-w-4xl mx-auto text-center">
-          <AnimatedSection>
+          <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Ready to Start Building?
             </h2>
@@ -432,7 +434,7 @@ console.log(data);`}
                 Full Documentation
               </Link>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
     </div>

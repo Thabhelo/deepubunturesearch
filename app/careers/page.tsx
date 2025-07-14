@@ -202,7 +202,7 @@ export default function CareersPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
+            {values.map((value, _) => (
               <div
                 key={value.title}
                 className="bg-dbu-bg-2/50 rounded-2xl p-6 border border-dbu-grad-from/20 hover:border-dbu-grad-from/40 transition-all duration-300"
@@ -233,7 +233,7 @@ export default function CareersPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
+            {benefits.map((benefit, _) => (
               <div
                 key={benefit.title}
                 className="bg-dbu-bg-2/50 rounded-2xl p-6 border border-dbu-grad-from/20 hover:border-dbu-grad-from/40 transition-all duration-300"
@@ -264,7 +264,7 @@ export default function CareersPage() {
           </div>
 
           <div className="space-y-6">
-            {openPositions.map((position, index) => (
+            {openPositions.map((position, _) => (
               <div
                 key={position.title}
                 className="bg-dbu-bg-2/50 rounded-2xl p-8 border border-dbu-grad-from/20 hover:border-dbu-grad-from/40 transition-all duration-300"
@@ -357,7 +357,7 @@ export default function CareersPage() {
                 title: "Offer",
                 description: "Reference checks and offer discussion"
               }
-            ].map((step, index) => (
+            ].map((step, _) => (
               <div key={step.step} className="text-center">
                 <div className="w-16 h-16 bg-dbu-gradient rounded-full flex items-center justify-center text-white font-bold text-xl mb-4 mx-auto">
                   {step.step}

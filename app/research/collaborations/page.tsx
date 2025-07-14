@@ -240,7 +240,7 @@ export default function CollaborationsPage() {
               Collaboration <span className="text-gradient">Types</span>
             </h2>
             <p className="text-xl text-dbu-fg-2 max-w-3xl mx-auto">
-              Multiple ways to partner with us based on your institution's needs and goals
+              Multiple ways to partner with us based on your institution&apos;s needs and goals
             </p>
           </div>
 
@@ -356,14 +356,14 @@ export default function CollaborationsPage() {
               Open Research <span className="text-gradient">Areas</span>
             </h2>
             <p className="text-xl text-dbu-fg-2 max-w-3xl mx-auto">
-              Current research areas where we're actively seeking collaboration partners
+              Current research areas where we&apos;re actively seeking collaboration partners
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {researchAreas.map((area, index) => (
+            {researchAreas.map((area, _) => (
               <div
-                key={index}
+                key={_}
                 className="bg-dbu-bg-2/50 rounded-2xl p-6 border border-dbu-grad-from/20 hover:border-dbu-grad-from/40 transition-all duration-300"
               >
                 <div className="flex items-start justify-between mb-4">

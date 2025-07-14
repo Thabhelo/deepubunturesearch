@@ -1,10 +1,18 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { AnimatedSection, AnimatedCard } from '@/components/ui/animated-section'
 
-// Server-safe motion component replacement
+// Server-safe motion replacement
 const motion = {
-  div: ({ children, className, ...props }: any) => <div className={className}>{children}</div>
+  div: ({ children, className, initial, animate, transition, ...props }: { 
+    children: React.ReactNode; 
+    className?: string;
+    initial?: any;
+    animate?: any;
+    transition?: any;
+    [key: string]: any;
+  }) => (
+    <div className={className}>{children}</div>
+  )
 }
 
 export const metadata: Metadata = {

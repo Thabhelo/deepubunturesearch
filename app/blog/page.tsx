@@ -200,7 +200,7 @@ export default function BlogPage() {
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {recentPosts.map((post, index) => (
+            {recentPosts.map((post, _) => (
               <div
                 key={post.slug}
                 className="bg-dbu-bg-2/50 rounded-2xl p-6 border border-dbu-grad-from/20 hover:border-dbu-grad-from/40 transition-all duration-300 group cursor-pointer"

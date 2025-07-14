@@ -420,7 +420,7 @@ export default function CustomSolutionsPage() {
               Ready to Build Your Custom Solution?
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Let's discuss your specific requirements and create a tailored AI solution
+              Let&apos;s discuss your specific requirements and create a tailored AI solution
               that drives real business value for your organization.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
