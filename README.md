@@ -10,7 +10,7 @@ A science-centric corporate website showcasing Deep Ubuntu Research's AI tooling
 
 ### Key Features
 
-- **Scale AI-level Polish**: Iridescent hero objects, depth cards, gradient highlights
+- **Interactive UI**: Iridescent hero objects, depth cards, gradient highlights
 - **Interactive 3D Scenes**: WebGL-powered mathematical visualizations
 - **Dark Purple → White Brand**: Unique color palette with neon accents
 - **Hotkey System**: Power-user shortcuts for theme, animations, and formulas
