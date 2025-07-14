@@ -66,6 +66,7 @@
     "eslint-config-next": "^14.0.0",
     "jsdom": "^26.1.0",
     "postcss": "^8.4.31",
-    "vitest": "^0.34.6"
+    "vite": "^7.0.4",
+    "vitest": "^3.2.4"
   }
 }
