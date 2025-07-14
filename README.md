@@ -1,5 +1,3 @@
-# 🚨 PRIVATE / PROPRIETARY - DO NOT DISTRIBUTE 🚨
-
 ## Deep Ubuntu Research - Production Website
 
 **This repository contains proprietary code and assets belonging to Deep Ubuntu Research. All rights reserved. Distribution, modification, or use of this code without explicit written permission is strictly prohibited.**
@@ -8,9 +6,9 @@
 
 ## Project Overview
 
-A visually striking, science-centric corporate website showcasing Deep Ubuntu Research's AI tooling and research initiatives. Built with Next.js 14, featuring interactive 3D scenes, scroll-driven storytelling, and enterprise-grade architecture.
+A science-centric corporate website showcasing Deep Ubuntu Research's AI tooling and research initiatives. Built with Next.js 14, featuring interactive 3D scenes, scroll-driven storytelling, and enterprise-grade architecture.
 
-### 🎯 Key Features
+### Key Features
 
 - **Scale AI-level Polish**: Iridescent hero objects, depth cards, gradient highlights
 - **Interactive 3D Scenes**: WebGL-powered mathematical visualizations
@@ -34,7 +32,7 @@ A visually striking, science-centric corporate website showcasing Deep Ubuntu Re
 | **Testing** | Playwright + Vitest | E2E and unit testing |
 | **CI/CD** | GitHub Actions → Vercel | Automated deployment pipeline |
 
-## 🎨 Animation Architecture
+## Animation Architecture
 
 The website uses a sophisticated three-library animation system:
 
@@ -56,7 +54,7 @@ The website uses a sophisticated three-library animation system:
 - Complex multi-element choreography
 - High-performance scroll-driven effects
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -138,7 +136,7 @@ The website includes power-user shortcuts:
 
 All hotkeys show toast notifications for user feedback.
 
-## 🧪 Testing
+## Testing
 
 ### Unit Tests (Vitest)
 ```bash
@@ -161,7 +159,7 @@ npm run type-check
 npm run lint
 ```
 
-## 🚀 Deployment
+## Deployment
 
 ### Automatic Deployment
 
@@ -180,7 +178,7 @@ npm run build
 npx vercel --prod
 ```
 
-## 🎨 Design System
+## Design System
 
 ### Brand Colors
 
@@ -207,41 +205,23 @@ npx vercel --prod
 - **Duration**: 300ms for micro-interactions, 800ms for section reveals
 - **Reduced Motion**: Automatically detected and respected
 
-## 📊 Performance
+## Performance
 
 - **Lighthouse Score**: 95+ on all metrics
 - **Core Web Vitals**: Optimized for real-world performance
 - **Bundle Size**: Tree-shaken and code-split for minimal payload
 - **3D Rendering**: Adaptive quality based on device capabilities
 
-## 🔒 Security & Privacy
+## Security & Privacy
 
 - **No External Analytics**: Optional self-hosted Plausible
 - **CSP Headers**: Content Security Policy implemented
 - **Private Repository**: All code and assets are proprietary
 - **Access Control**: Repository access limited to authorized personnel
 
-## 🚨 License & Legal
+## Development Team
 
-**This project is proprietary software owned by Deep Ubuntu Research.**
-
-- ❌ No license is granted for use, modification, or distribution
-- ❌ All rights reserved under copyright law
-- ❌ Unauthorized access or distribution is prohibited
-- ✅ Internal use by Deep Ubuntu Research employees only
-
-## 👥 Development Team
-
-Access to this repository is restricted to authorized Deep Ubuntu Research personnel. For access requests or questions, contact the development team lead.
-
-## 📞 Support
-
-For technical issues or questions:
-
-1. Internal team members: Create an issue in this repository
-2. Security concerns: Contact security@deepubuntu.com
-3. Access requests: Contact development lead
-
+[@thabhelo](github.com/thabhelo)
 ---
 
-**© 2024 Deep Ubuntu Research. All rights reserved. Confidential and proprietary.** 
+**© 2024 Deep Ubuntu Research. All rights reserved.** 

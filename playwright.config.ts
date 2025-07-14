@@ -14,7 +14,14 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
 
-  projects: [
+  projects: process.env.CI ? [
+    // CI: Only run Chromium for faster, more reliable tests
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+  ] : [
+    // Local: Run all browsers for comprehensive testing
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
