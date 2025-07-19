@@ -9,73 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
-    
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x]
-        
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        
-    - name: Install dependencies
-      run: npm ci --legacy-peer-deps
-      timeout-minutes: 15
-      
-    - name: Run linter
-      run: npm run lint
-      timeout-minutes: 10
-      
-    - name: Run type check
-      run: npm run type-check
-      timeout-minutes: 10
-      
-    - name: Run unit tests
-      run: npm run test
-      timeout-minutes: 10
-      env:
-        NODE_OPTIONS: '--max_old_space_size=6144'
-        CI: true
-      
-    - name: Build application
-      run: npm run build
-      timeout-minutes: 20
-      env:
-        NODE_OPTIONS: '--max_old_space_size=6144'
-        CI: true
-        NEXT_TELEMETRY_DISABLED: 1
-        
-    - name: Install Playwright browsers
-      run: npx playwright install --with-deps chromium
-      timeout-minutes: 15
-      
-    - name: Run E2E tests
-      run: npm run test:e2e
-      timeout-minutes: 15
-      env:
-        CI: true
-        NODE_OPTIONS: '--max_old_space_size=4096'
-        
-    - name: Upload Playwright report
-      uses: actions/upload-artifact@v4
-      if: failure()
-      with:
-        name: playwright-report-${{ matrix.node-version }}
-        path: playwright-report/
-        retention-days: 30
-
-  deploy-preview:
-    needs: test
-    runs-on: ubuntu-latest
     timeout-minutes: 30
-    if: github.event_name == 'pull_request'
     
     steps:
     - name: Checkout code
@@ -88,31 +22,34 @@ jobs:
         cache: 'npm'
         
     - name: Install dependencies
-      run: npm ci --legacy-peer-deps
-      timeout-minutes: 15
+      run: npm ci
+      timeout-minutes: 10
+      
+    - name: Run linter
+      run: npm run lint
+      timeout-minutes: 5
+      
+    - name: Run type check
+      run: npm run type-check
+      timeout-minutes: 5
+      
+    - name: Run unit tests
+      run: npm run test
+      timeout-minutes: 5
+      env:
+        CI: true
       
     - name: Build application
       run: npm run build
-      timeout-minutes: 20
+      timeout-minutes: 15
       env:
-        NODE_OPTIONS: '--max_old_space_size=6144'
         CI: true
         NEXT_TELEMETRY_DISABLED: 1
-      
-    - name: Deploy to Vercel Preview
-      uses: amondnet/vercel-action@v25
-      id: vercel-preview
-      with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-        github-comment: true
-        working-directory: ./
 
   deploy-production:
     needs: test
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
     if: github.ref == 'refs/heads/main'
     
     steps:
@@ -126,14 +63,13 @@ jobs:
         cache: 'npm'
         
     - name: Install dependencies
-      run: npm ci --legacy-peer-deps
-      timeout-minutes: 15
+      run: npm ci
+      timeout-minutes: 10
       
     - name: Build application
       run: npm run build
-      timeout-minutes: 20
+      timeout-minutes: 15
       env:
-        NODE_OPTIONS: '--max_old_space_size=6144'
         CI: true
         NEXT_TELEMETRY_DISABLED: 1
       
