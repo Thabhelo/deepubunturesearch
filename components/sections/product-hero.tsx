@@ -11,6 +11,8 @@ interface ProductHeroProps {
 
 function getProductScene(slug: string) {
   switch (slug) {
+    case 'deep-ubuntu-av':
+      return <TensorGrid />
     case 'cowcow':
       return <WaveformSpiral />
     case 'deep-ubuntu-ai':

@@ -27,6 +27,7 @@ export function Navigation() {
     {
       name: 'Products',
       items: [
+        { name: 'DeepUbuntuAV', href: '/products/deep-ubuntu-av', description: 'Real-world autonomous vehicle datasets from challenging terrains' },
         { name: 'Deep Ubuntu AI', href: '/products/deep-ubuntu-ai', description: 'Advanced foundation models for African languages' },
         { name: 'cowcow CLI', href: '/products/cowcow', description: 'Offline-first data capture tools' },
         { name: 'AI Agents', href: '/products/ai-agents', description: 'Intelligent automation solutions' },

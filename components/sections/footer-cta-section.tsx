@@ -13,6 +13,7 @@ export function FooterCTASection() {
 
   const footerLinks = {
     'Products': [
+      { name: 'DeepUbuntuAV', href: '/products/deep-ubuntu-av' },
       { name: 'Deep Ubuntu AI', href: '/products/deep-ubuntu-ai' },
       { name: 'cowcow CLI', href: '/products/cowcow' },
       { name: 'AI Agents', href: '/products/ai-agents' },
