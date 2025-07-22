@@ -1,0 +1,187 @@
+---
+title: "DeepUbuntuAV"
+slug: "deep-ubuntu-av"
+tagline: "Real-world autonomous vehicle datasets from challenging African and Asian terrains"
+status: "stable"
+stack: ["Computer Vision", "LiDAR", "GPS", "Edge Computing"]
+order: 0
+modelScene: true
+---
+
+# DeepUbuntuAV
+
+## Overview
+
+DeepUbuntuAV is a comprehensive data collection, cleaning, and labeling platform specifically designed for autonomous vehicle development in challenging real-world conditions. Unlike traditional AV datasets that focus primarily on well-maintained roads in developed regions like the Bay Area, DeepUbuntuAV captures the harsh realities of driving in Africa and Asia—unpaved roads, extreme weather, complex traffic patterns, and infrastructure variations that current autonomous vehicle systems struggle to handle.
+
+## The Challenge We Solve
+
+Current autonomous vehicle datasets are heavily biased toward:
+- **Smooth, well-maintained roads** with clear lane markings
+- **Predictable traffic patterns** with rule-following drivers
+- **Consistent infrastructure** and road signage
+- **Optimal weather conditions** with good visibility
+
+**Real-world driving conditions** in Africa and Asia present:
+- Unpaved roads, potholes, and irregular surfaces
+- Mixed traffic with pedestrians, livestock, and informal vendors
+- Inconsistent or missing road infrastructure
+- Extreme weather conditions affecting visibility and road conditions
+- Cultural driving patterns and local traffic norms
+
+## Key Features
+
+### Comprehensive Data Collection
+- **Multi-Modal Sensors**: High-resolution cameras, LiDAR, radar, and GPS
+- **Environmental Monitoring**: Weather, lighting, and road condition sensors
+- **Traffic Analysis**: Real-time detection and classification of vehicles, pedestrians, animals, and obstacles
+- **Infrastructure Mapping**: 3D mapping of road surfaces, signage, and landmarks
+
+### Advanced Labeling Pipeline
+- **Pixel-Perfect Segmentation**: Precise object boundaries for complex scenarios
+- **3D Bounding Boxes**: Full spatial understanding for dynamic objects
+- **Semantic Mapping**: Road surface classification and drivability analysis
+- **Behavioral Annotation**: Traffic pattern analysis and cultural driving norms
+
+### Edge Computing Platform
+- **Real-Time Processing**: On-device data filtering and initial labeling
+- **Bandwidth Optimization**: Intelligent data compression and prioritization
+- **Offline Capability**: Continuous operation in areas with limited connectivity
+- **Quality Assurance**: Automated validation and consistency checking
+
+## Dataset Coverage
+
+### Geographic Regions
+- **East Africa**: Kenya, Tanzania, Uganda, Rwanda
+- **West Africa**: Nigeria, Ghana, Senegal, Côte d'Ivoire
+- **South Africa**: Urban and rural scenarios across provinces
+- **Southeast Asia**: Indonesia, Philippines, Vietnam, Thailand
+- **South Asia**: India, Bangladesh, Pakistan, Sri Lanka
+
+### Driving Scenarios
+- **Urban Environments**: Dense city traffic, informal settlements, markets
+- **Rural Roads**: Unpaved paths, agricultural areas, remote villages
+- **Highway Conditions**: Varying quality intercity connections
+- **Extreme Weather**: Monsoons, dust storms, flooding conditions
+- **Mixed Traffic**: Cars, motorcycles, bicycles, pedestrians, livestock
+
+## Technical Specifications
+
+### Data Collection Vehicle Fleet
+```yaml
+Sensors:
+  - Cameras: 8x 4K resolution, 360° coverage
+  - LiDAR: Velodyne VLS-128, 200m range
+  - Radar: 6x mid-range, 4x long-range
+  - GPS: RTK precision positioning
+  - IMU: 9-axis inertial measurement
+  - Weather: Temperature, humidity, precipitation
+
+Processing:
+  - NVIDIA Orin AGX: 275 TOPS AI performance
+  - Storage: 20TB NVMe SSD array
+  - Connectivity: 5G, satellite backup
+  - Power: Extended battery for 12-hour operation
+```
+
+### Data Pipeline
+1. **Real-Time Capture**: 10GB/hour multi-modal data collection
+2. **Edge Processing**: Initial filtering and basic annotation
+3. **Quality Control**: Automated consistency and completeness checks
+4. **Human Annotation**: Expert labeling for complex scenarios
+5. **Validation**: Multi-reviewer verification process
+6. **Distribution**: API access with versioning and provenance tracking
+
+## Pricing
+
+### Research License
+- **$500/month** for academic institutions
+- 1TB of annotated data access
+- Monthly dataset updates
+- Community support and documentation
+
+### Commercial License
+- **$5,000/month** for startup/SME access
+- 10TB of annotated data access
+- Weekly dataset updates
+- Priority support and custom annotations
+
+### Enterprise
+- **Custom pricing** based on requirements
+- Full dataset access (500TB+)
+- Real-time data feeds
+- Custom collection campaigns
+- Dedicated support team
+- On-premise deployment options
+
+## API Integration
+
+```python
+from deep_ubuntu_av import DatasetAPI
+
+# Initialize the API client
+client = DatasetAPI(
+    api_key="your-api-key",
+    region="east-africa"
+)
+
+# Query specific scenarios
+scenarios = client.search(
+    location="nairobi",
+    weather="rainy",
+    traffic_density="high",
+    road_type="unpaved"
+)
+
+# Download annotated data
+dataset = client.download(
+    scenario_ids=scenarios,
+    annotations=["semantic_segmentation", "3d_bounding_boxes"],
+    format="kitti"
+)
+
+# Access real-time feeds
+stream = client.stream(
+    filters={"location": "lagos", "time": "rush_hour"},
+    callback=process_frame
+)
+```
+
+## Applications
+
+### Autonomous Vehicle Development
+- **Robust Perception**: Train models on diverse, challenging conditions
+- **Localization**: GPS-denied navigation in urban canyons
+- **Planning**: Handle unpredictable traffic and road conditions
+- **Safety**: Emergency response to unexpected obstacles
+
+### Infrastructure Planning
+- **Road Quality Assessment**: Automated infrastructure auditing
+- **Traffic Flow Optimization**: Data-driven urban planning
+- **Safety Analysis**: Accident prevention and risk assessment
+- **Economic Impact**: Transportation efficiency improvements
+
+### Research Applications
+- **Computer Vision**: Robust object detection and tracking
+- **Robotics**: Real-world navigation and path planning
+- **Urban Studies**: Traffic pattern analysis and cultural behaviors
+- **Climate Research**: Weather impact on transportation systems
+
+## Data Quality Guarantee
+
+- **99.5% Annotation Accuracy**: Verified through multi-reviewer process
+- **Sub-meter GPS Precision**: RTK-corrected positioning data
+- **Weather-Verified**: Environmental conditions logged for each frame
+- **Cultural Validation**: Local experts verify behavioral annotations
+- **Provenance Tracking**: Complete data lineage and collection metadata
+
+## Getting Started
+
+1. **Request Access**: Contact our team for dataset evaluation
+2. **API Setup**: Receive credentials and integration documentation  
+3. **Data Exploration**: Browse sample datasets and annotations
+4. **Integration**: Implement API calls in your training pipeline
+5. **Deployment**: Test models on held-out validation sets
+6. **Scaling**: Expand access based on performance requirements
+
+Transform your autonomous vehicle systems with data that reflects the real world. DeepUbuntuAV bridges the gap between controlled testing environments and the complex realities of global transportation. 
